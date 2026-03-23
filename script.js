@@ -125,3 +125,24 @@ async function getForecast(city) {
     const data = await res.json();
     // Ekhane data.list theke 5 diner data filter kore UI-te dekhate hobe
 }
+async function getForecast(cityQuery) {
+    const forecastBox = document.getElementById("forecast-container");
+    const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?${cityQuery}&units=metric&appid=${apiKey}`);
+    const data = await res.json();
+
+    forecastBox.innerHTML = "";
+    // প্রতি ৮টি ডেটা পর পর (২৪ ঘণ্টা) একটি করে ডেটা ফিল্টার করা
+    for (let i = 0; i < data.list.length; i += 8) {
+        const day = data.list[i];
+        const date = new Date(day.dt_txt).toLocaleDateString('en-US', {weekday: 'short'});
+        const div = document.createElement("div");
+        div.classList.add("forecast-item");
+        div.innerHTML = `
+            <p style="font-size: 12px;">${date}</p>
+            <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png">
+            <p><b>${Math.round(day.main.temp)}°</b></p>
+        `;
+        forecastBox.appendChild(div);
+    }
+    forecastBox.classList.remove("hidden");
+}

@@ -1,0 +1,105 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body {
+    background: linear-gradient(135deg, #00feba, #5b548a);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background 0.5s ease;
+}
+
+.weather-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    position: relative;
+}
+
+.autocomplete-wrapper {
+    flex: 1;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 16px;
+}
+
+.search-box input::placeholder { color: #ddd; }
+
+.search-box button {
+    background: white;
+    color: #5b548a;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.search-box button:hover { background: #f9004d; color: white; }
+
+/* Autocomplete CSS */
+.suggestions-list {
+    position: absolute;
+    top: 55px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.suggestion-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.suggestion-item:hover { background: #f9004d; }
+
+/* Weather Card CSS */
+#weather-card { text-align: center; margin-top: 30px; animation: fadeIn 1s; }
+#weather-icon { width: 120px; margin-top: -20px; }
+#temp { font-size: 70px; font-weight: 600; line-height: 1; margin: 10px 0; }
+#city-name { font-size: 35px; font-weight: 500; }
+#description { text-transform: capitalize; font-size: 18px; color: #ddd; margin-bottom: 20px;}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.col { display: flex; align-items: center; gap: 15px; text-align: left; }
+.col i { font-size: 30px; }
+
+.hidden { display: none !important; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }

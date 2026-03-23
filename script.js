@@ -119,3 +119,9 @@ searchBox.addEventListener("keypress", (e) => {
 
 // Default weather on load
 checkWeather("q=Madaripur");
+async function getForecast(city) {
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
+    const res = await fetch(forecastUrl);
+    const data = await res.json();
+    // Ekhane data.list theke 5 diner data filter kore UI-te dekhate hobe
+}
